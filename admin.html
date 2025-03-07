@@ -276,11 +276,12 @@
       let dinamik = document.getElementById("dinamikCards");
       let error = document.getElementById("error");
       let ext1 = document.getElementById("ext1img");
+      let imgInput = document.getElementById("imgInput");
       let arr = [];
 
       ext1.addEventListener("click", () => {
-        history.back()
-      })
+        history.back();
+      });
 
       editBtn.style.display = "none";
       btnM.addEventListener("click", () => {
@@ -371,8 +372,6 @@
           return;
         }
 
-
-
         editBtn.onclick = function () {
           update(indexNum);
           modal.style.display = "none";
@@ -392,6 +391,7 @@
 
         localStorage.setItem("data", JSON.stringify(arr));
         read();
+        location.reload;
         form.reset();
       }
 
@@ -411,75 +411,71 @@
         list.innerHTML = "";
         arr.forEach((obj, indexNum) => {
           list.innerHTML += `
-                <div class="mt-[10px] cards cursor-pointer">
-                     <div
-                            class="grid grid-cols-5 gap-[10px] [@media(max-width:1120px)]:grid-cols-1 items-center bg-white p-4 rounded-lg hover:bg-gray-50"
-                          >
-                            <div
-                              class="flex items-center space-x-4 gap-4 [@media(max-width:1120px)]:flex-col [ [@media(max-width:1120px)]:space-x-0"
-                            >
-                              <img
-                                src="./img/img.png"
-                                alt="User"
-                                class="w-10 h-10 rounded"
-                              />
-                              <div class="flex items-center justify-between w-[100%]">
-                                <div
-                                onclick="dinamikFn(${indexNum})"
-                                  class="font-medium hidden [@media(max-width:1120px)]:block"
+                      <div class="mt-[10px] cards cursor-pointer">
+                           <div
+                                  class="grid grid-cols-5 gap-[10px] [@media(max-width:1120px)]:grid-cols-1 items-center bg-white p-4 rounded-lg hover:bg-gray-50"
                                 >
-                                  Name:
+                                  <div
+                                    class="flex items-center space-x-4 gap-4 [@media(max-width:1120px)]:flex-col [ [@media(max-width:1120px)]:space-x-0"
+                                  >
+                                    <img class="preview" src="" style="width: 80px; height: 50px; border-radius: 4px; ">
+                                    <div class="flex items-center justify-between w-[100%]">
+                                      <div
+                                      onclick="dinamikFn(${indexNum})"
+                                        class="font-medium hidden [@media(max-width:1120px)]:block"
+                                      >
+                                        Name:
+                                      </div>
+                                      <div class="font-medium nameCards">${obj.name}</div>
+                                    </div>
+                                  </div>
+                                  <div
+                                  onclick="dinamikFn(${indexNum})"
+                                    class="flex items-center justify-between gap-[20px] [@media(max-width:1120px)]:mt-[10px]"
+                                  >
+                                    <div class="hidden [@media(max-width:1120px)]:block">
+                                      Email:
+                                    </div>
+                                    <div class="text-gray-600 truncate">${obj.email}</div>
+                                  </div>
+                                  <div
+                                  onclick="dinamikFn(${indexNum})"
+                                    class="flex items-center justify-between [@media(max-width:1120px)]:mt-[10px]"
+                                  >
+                                    <div class="hidden [@media(max-width:1120px)]:block">
+                                      Phone:
+                                    </div>
+                                    <div class="text-gray-600 ">${obj.phone}</div>
+                                  </div>
+                                  <div
+                                  onclick="dinamikFn(${indexNum})"
+                                    class="flex items-center justify-between [@media(max-width:1120px)]:mt-[10px]"
+                                  >
+                                    <div class="hidden [@media(max-width:1120px)]:block">
+                                      Id:
+                                    </div>
+                                    <div class="text-gray-600">${obj.idUser}</div>
+                                  </div>
+                                  <div
+                                    class="text-gray-600 flex justify-between items-center [@media(max-width:1120px)]:flex-col [@media(max-width:1120px)]:items-end [@media(max-width:1120px)]:mt-[10px]"
+                                  >
+                                    <div onclick="dinamikFn(${indexNum})" class="flex items-center justify-between w-[100%]">
+                                      <div class="hidden [@media(max-width:1120px)]:block">
+                                        Date:
+                                      </div>
+                                      <div class="">${obj.date}</div>
+                                    </div>
+                                    <div
+                                      class="flex space-x-3 text-yellow-500 [@media(max-width:1120px)]:mt-[10px] [@media(max-width:1120px)]:gap-[30px]"
+                                    >
+                                      <button onclick="delet(${indexNum})" class="w-[30px] h-[30px] hover:text-red-500">
+                                        <img src="./img/trash 1.svg" alt="" />
+                                      </button>
+                                    </div>
+                                  </div>
                                 </div>
-                                <div class="font-medium nameCards">${obj.name}</div>
-                              </div>
-                            </div>
-                            <div
-                            onclick="dinamikFn(${indexNum})"
-                              class="flex items-center justify-between gap-[20px] [@media(max-width:1120px)]:mt-[10px]"
-                            >
-                              <div class="hidden [@media(max-width:1120px)]:block">
-                                Email:
-                              </div>
-                              <div class="text-gray-600 truncate">${obj.email}</div>
-                            </div>
-                            <div
-                            onclick="dinamikFn(${indexNum})"
-                              class="flex items-center justify-between [@media(max-width:1120px)]:mt-[10px]"
-                            >
-                              <div class="hidden [@media(max-width:1120px)]:block">
-                                Phone:
-                              </div>
-                              <div class="text-gray-600 ">${obj.phone}</div>
-                            </div>
-                            <div
-                            onclick="dinamikFn(${indexNum})"
-                              class="flex items-center justify-between [@media(max-width:1120px)]:mt-[10px]"
-                            >
-                              <div class="hidden [@media(max-width:1120px)]:block">
-                                Id:
-                              </div>
-                              <div class="text-gray-600">${obj.idUser}</div>
-                            </div>
-                            <div
-                              class="text-gray-600 flex justify-between items-center [@media(max-width:1120px)]:flex-col [@media(max-width:1120px)]:items-end [@media(max-width:1120px)]:mt-[10px]"
-                            >
-                              <div onclick="dinamikFn(${indexNum})" class="flex items-center justify-between w-[100%]">
-                                <div class="hidden [@media(max-width:1120px)]:block">
-                                  Date:
                                 </div>
-                                <div class="">${obj.date}</div>
-                              </div>
-                              <div
-                                class="flex space-x-3 text-yellow-500 [@media(max-width:1120px)]:mt-[10px] [@media(max-width:1120px)]:gap-[30px]"
-                              >
-                                <button onclick="delet(${indexNum})" class="w-[30px] h-[30px] hover:text-red-500">
-                                  <img src="./img/trash 1.svg" alt="" />
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                          </div>
-            `;
+                  `;
         });
       }
 
@@ -492,103 +488,103 @@
         boxSearch.style.display = "none";
         searchBox.style.display = "none";
 
-        dinamik.innerHTML = ` 
-        <div class="w-[100%]">
-  
-          <div class="bg-[#F8F8F8] h-[750px] [@media(max-width:780px)]:h-[615px] pr-[30px] pl-[30px] pt-[15px] [@media(max-width:780px)]:px-[15px]">
-            <div
-              class="flex items-center justify-between border-b-2 border-[#E5E5E5] pb-[11px] mb-[21px]"
-            >
-              <h2
-                class="text-[22px] font-[Montserrat] font-bold [@media(max-width:1120px)]:text-[20px] [@media(max-width:330px)]:text-[19px]"
-              >
-                Students List
-              </h2>
-            </div>
+        dinamik.innerHTML = `
+              <div class="w-[100%]">
 
-            <div
-              class="relative rounded-lg w-[592px] h-[391px] [@media(max-width:1120px)]:w-[100%] [@media(max-width:780px)]:flex-col [@media(max-width:780px)]:h-[525px] [@media(max-width:780px)]:gap-[20px] pb-[30px] flex items-start gap-[51px] pl-[22px] pt-[25px] bg-white"
-            >
-              <div class="">
-                <img
-                  class="w-[209px] h-[216px]"
-                  src="./img/profile.png"
-                  alt=""
-                />
+                <div class="bg-[#F8F8F8] h-[750px] [@media(max-width:780px)]:h-[615px] pr-[30px] pl-[30px] pt-[15px] [@media(max-width:780px)]:px-[15px]">
+                  <div
+                    class="flex items-center justify-between border-b-2 border-[#E5E5E5] pb-[11px] mb-[21px]"
+                  >
+                    <h2
+                      class="text-[22px] font-[Montserrat] font-bold [@media(max-width:1120px)]:text-[20px] [@media(max-width:330px)]:text-[19px]"
+                    >
+                      Students List
+                    </h2>
+                  </div>
+
+                  <div
+                    class="relative rounded-lg w-[592px] h-[391px] [@media(max-width:1120px)]:w-[100%] [@media(max-width:780px)]:flex-col [@media(max-width:780px)]:h-[525px] [@media(max-width:780px)]:gap-[20px] pb-[30px] flex items-start gap-[51px] pl-[22px] pt-[25px] bg-white"
+                  >
+                    <div class="">
+                      <img
+                        class="w-[209px] h-[216px]"
+                        src="./img/profile.png"
+                        alt=""
+                      />
+                    </div>
+                    <div class="flex items-start gap-[16px] flex-col">
+                      <div class="">
+                        <div
+                          class="text-[12px] font-[Montserrat] font-semibold text-[#ACACAC]"
+                        >
+                          Name
+                        </div>
+                        <div
+                          class="text-[14px] font-[Montserrat] font-normal text-black"
+                        >
+                          ${newData[indexNum].name}
+                        </div>
+                      </div>
+                      <div class="w-[100%]">
+                        <div
+                          class="text-[12px] font-[Montserrat] font-semibold text-[#ACACAC]"
+                        >
+                          Email
+                        </div>
+                        <div
+                          class="text-[14px] font-[Montserrat] font-normal text-black w-[100%] truncate"
+                        >
+                          ${newData[indexNum].email}
+                        </div>
+                      </div>
+                      <div class="">
+                        <div
+                          class="text-[12px] font-[Montserrat] font-semibold text-[#ACACAC]"
+                        >
+                          Phone
+                        </div>
+                        <div
+                          class="text-[14px] font-[Montserrat] font-normal text-black"
+                        >
+                          ${newData[indexNum].phone}
+                        </div>
+                      </div>
+                      <div class="">
+                        <div
+                          class="text-[12px] font-[Montserrat] font-semibold text-[#ACACAC]"
+                        >
+                          Enroll Number
+                        </div>
+                        <div
+                          class="text-[14px] font-[Montserrat] font-normal text-black"
+                        >
+                         ${newData[indexNum].idUser}
+                        </div>
+                      </div>
+                      <div class="">
+                        <div
+                          class="text-[12px] font-[Montserrat] font-semibold text-[#ACACAC]"
+                        >
+                          Date admission
+                        </div>
+                        <div
+                          class="text-[14px] font-[Montserrat] font-normal text-black"
+                        >
+                         ${newData[indexNum].date}
+                        </div>
+                      </div>
+                    </div>
+                    <img
+                    onclick="edit(${indexNum})"
+                    id="editImg"
+                      class="absolute top-[15px] right-[15px] [@media(max-width:360px)]:top-[390px]"
+                      src="./img/ruchki.svg"
+                      alt=""
+                    />
+                  </div>
+                </div>
               </div>
-              <div class="flex items-start gap-[16px] flex-col">
-                <div class="">
-                  <div
-                    class="text-[12px] font-[Montserrat] font-semibold text-[#ACACAC]"
-                  >
-                    Name
-                  </div>
-                  <div
-                    class="text-[14px] font-[Montserrat] font-normal text-black"
-                  >
-                    ${newData[indexNum].name}
-                  </div>
-                </div>
-                <div class="w-[100%]">
-                  <div
-                    class="text-[12px] font-[Montserrat] font-semibold text-[#ACACAC]"
-                  >
-                    Email
-                  </div>
-                  <div
-                    class="text-[14px] font-[Montserrat] font-normal text-black w-[100%] truncate"
-                  >
-                    ${newData[indexNum].email}
-                  </div>
-                </div>
-                <div class="">
-                  <div
-                    class="text-[12px] font-[Montserrat] font-semibold text-[#ACACAC]"
-                  >
-                    Phone
-                  </div>
-                  <div
-                    class="text-[14px] font-[Montserrat] font-normal text-black"
-                  >
-                    ${newData[indexNum].phone}
-                  </div>
-                </div>
-                <div class="">
-                  <div
-                    class="text-[12px] font-[Montserrat] font-semibold text-[#ACACAC]"
-                  >
-                    Enroll Number
-                  </div>
-                  <div
-                    class="text-[14px] font-[Montserrat] font-normal text-black"
-                  >
-                   ${newData[indexNum].idUser}
-                  </div>
-                </div>
-                <div class="">
-                  <div
-                    class="text-[12px] font-[Montserrat] font-semibold text-[#ACACAC]"
-                  >
-                    Date admission
-                  </div>
-                  <div
-                    class="text-[14px] font-[Montserrat] font-normal text-black"
-                  >
-                   ${newData[indexNum].date}
-                  </div>
-                </div>
-              </div>
-              <img
-              onclick="edit(${indexNum})"
-              id="editImg"
-                class="absolute top-[15px] right-[15px] [@media(max-width:360px)]:top-[390px]"
-                src="./img/ruchki.svg"
-                alt=""
-              />
-            </div>
-          </div>
-        </div>
-        `;
+              `;
       }
 
       let searchBox = document.getElementById("searchBox");
@@ -635,6 +631,17 @@
           }
         });
       });
+
+      async function api() {
+        document.querySelectorAll(".preview").forEach(async (img) => {
+          let response = await fetch(
+            `https://picsum.photos/200/300?random=${Math.random()}`
+          ); // Har bir rasm uchun alohida API chaqiramiz
+          img.src = response.url;
+        });
+      }
+
+      api();
     </script>
   </body>
 </html>
