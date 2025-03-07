@@ -341,6 +341,16 @@
       }
 
       function edit(indexNum) {
+        modal.style.display = "block";
+        submitBtn.style.display = "none";
+        editBtn.style.display = "block";
+
+        name.value = arr[indexNum].name;
+        email.value = arr[indexNum].email;
+        phone.value = arr[indexNum].phone;
+        idUser.value = arr[indexNum].idUser;
+        date.value = arr[indexNum].date;
+
         if (
           name.value.trim() == "" ||
           email.value.trim() == "" ||
@@ -356,15 +366,7 @@
           return;
         }
 
-        name.value = arr[indexNum].name;
-        email.value = arr[indexNum].email;
-        phone.value = arr[indexNum].phone;
-        idUser.value = arr[indexNum].idUser;
-        date.value = arr[indexNum].date;
 
-        modal.style.display = "block";
-        submitBtn.style.display = "none";
-        editBtn.style.display = "block";
 
         editBtn.onclick = function () {
           update(indexNum);
@@ -393,7 +395,6 @@
           ? JSON.parse(localStorage.getItem("data"))
           : [];
         read();
-        dinamik();
       })();
 
       sortImg.addEventListener("click", () => {
@@ -403,9 +404,9 @@
 
       function read() {
         list.innerHTML = "";
-        arr.map((obj, indexNum) => {
+        arr.forEach((obj, indexNum) => {
           list.innerHTML += `
-                <div class="mt-[10px] cards cursor-pointer" onclick="dinamikFn(${indexNum})">
+                <div class="mt-[10px] cards cursor-pointer">
                      <div
                             class="grid grid-cols-5 gap-[10px] [@media(max-width:1120px)]:grid-cols-1 items-center bg-white p-4 rounded-lg hover:bg-gray-50"
                           >
@@ -419,6 +420,7 @@
                               />
                               <div class="flex items-center justify-between w-[100%]">
                                 <div
+                                onclick="dinamikFn(${indexNum})"
                                   class="font-medium hidden [@media(max-width:1120px)]:block"
                                 >
                                   Name:
@@ -427,6 +429,7 @@
                               </div>
                             </div>
                             <div
+                            onclick="dinamikFn(${indexNum})"
                               class="flex items-center justify-between gap-[20px] [@media(max-width:1120px)]:mt-[10px]"
                             >
                               <div class="hidden [@media(max-width:1120px)]:block">
@@ -435,6 +438,7 @@
                               <div class="text-gray-600 truncate">${obj.email}</div>
                             </div>
                             <div
+                            onclick="dinamikFn(${indexNum})"
                               class="flex items-center justify-between [@media(max-width:1120px)]:mt-[10px]"
                             >
                               <div class="hidden [@media(max-width:1120px)]:block">
@@ -443,6 +447,7 @@
                               <div class="text-gray-600 ">${obj.phone}</div>
                             </div>
                             <div
+                            onclick="dinamikFn(${indexNum})"
                               class="flex items-center justify-between [@media(max-width:1120px)]:mt-[10px]"
                             >
                               <div class="hidden [@media(max-width:1120px)]:block">
@@ -453,7 +458,7 @@
                             <div
                               class="text-gray-600 flex justify-between items-center [@media(max-width:1120px)]:flex-col [@media(max-width:1120px)]:items-end [@media(max-width:1120px)]:mt-[10px]"
                             >
-                              <div class="flex items-center justify-between w-[100%]">
+                              <div onclick="dinamikFn(${indexNum})" class="flex items-center justify-between w-[100%]">
                                 <div class="hidden [@media(max-width:1120px)]:block">
                                   Date:
                                 </div>
@@ -462,10 +467,7 @@
                               <div
                                 class="flex space-x-3 text-yellow-500 [@media(max-width:1120px)]:mt-[10px] [@media(max-width:1120px)]:gap-[30px]"
                               >
-                                <button onclick="edit(${indexNum})" class="hover:text-yellow-700">
-                                  <img src="./img/edit.svg" alt="" />
-                                </button>
-                                <button onclick="delet(${indexNum})" class="hover:text-red-500">
+                                <button onclick="delet(${indexNum})" class="w-[30px] h-[30px] hover:text-red-500">
                                   <img src="./img/trash 1.svg" alt="" />
                                 </button>
                               </div>
