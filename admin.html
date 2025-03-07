@@ -43,7 +43,7 @@
             <span class="border-l-4 border-yellow-500 mr-2"></span>Admin
             Students
           </h2>
-          <img src="./img/nav.svg" alt="nav" />
+          <img id="ext1img" src="./img/nav.svg" alt="nav" />
         </div>
         <div
           class="flex items-center justify-between pt-5 pr-[51px] pb-5 pl-[30px] gap-3"
@@ -182,7 +182,7 @@
       id="error"
       class="top-[0px] z-50 [@media(max-width:600px)]:w-[100%] left-[-100%] ease-linear w-[40%] h-[50px] flex items-center justify-center rounded text-[20px] fixed bg-slate-300"
     >
-      <p>Malumot kiriting...</p>
+      <p>Malumot kitishda xatolik...</p>
     </div>
 
     <div class="modal ease-linear">
@@ -275,7 +275,12 @@
       let user = document.getElementById("cardsMax");
       let dinamik = document.getElementById("dinamikCards");
       let error = document.getElementById("error");
+      let ext1 = document.getElementById("ext1img");
       let arr = [];
+
+      ext1.addEventListener("click", () => {
+        history.back()
+      })
 
       editBtn.style.display = "none";
       btnM.addEventListener("click", () => {

@@ -58,10 +58,13 @@
       });
 
       function creat() {
-        if (login.value.trim() === "" || password.value.trim() === "") {
-          
-          return;
-        } 
+        if (login.value === "" || password.value === "") {
+          error.style.left = "0px";
+          setTimeout(() => {
+          error.style.left = "-100%";
+          }, 3000);
+          return
+        }
         user = [{
           login: login.value,
           password: password.value,
