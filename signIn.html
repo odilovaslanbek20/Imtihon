@@ -52,20 +52,7 @@
 
       form.addEventListener("submit", (e) => {
         e.preventDefault()
-        if (
-          name.value == "" ||
-          email.value == "" ||
-          phone.value == "" ||
-          idUser.value == "" ||
-          date.value == ""
-        ) {
-          error.style.left = "0px";
-
-          setTimeout(() => {
-            error.style.left = "-100%";
-          }, 3000);
-          return;
-        }
+      
         let user = JSON.parse(localStorage.getItem("login")) || [];
         user.map((users) => {
          if(userLogin.value.trim() === users.login && userPassword.value.trim() === users.password){

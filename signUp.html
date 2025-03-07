@@ -53,20 +53,6 @@
 
       form.addEventListener("submit", (event) => {
         event.preventDefault();
-        if (
-          name.value.trim() == "" ||
-          email.value.trim() == "" ||
-          phone.value.trim() == "" ||
-          idUser.value.trim() == "" ||
-          date.value.trim() == ""
-        ) {
-          error.style.left = "0px";
-
-          setTimeout(() => {
-            error.style.left = "-100%";
-          }, 3000);
-          return;
-        }
         creat();
         form.reset();
       });
