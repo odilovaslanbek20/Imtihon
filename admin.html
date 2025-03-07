@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="./src/output.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Imtihon</title>
+    <style>
+      *::-webkit-scrollbar {
+        display: none;
+      }
+      input[type="file"] {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+      }
+      .modal {
+        display: none;
+      }
+    </style>
+  </head>
+  <body style="background: #f2eae1">
+    <section class="">
+      <div class="flex items-center justify-between w-full text-left">
+        <div
+          class="flex items-center gap-[100px] [@media(max-width:410px)]:gap-[30px] [@media(max-width:410px)]:pl-[20px] pl-[30px]"
+        >
+          <h2
+            class="text-xl font-bold relative [@media(max-width:410px)]:text-[18px]"
+          >
+            <span class="border-l-4 border-yellow-500 mr-2"></span>Admin
+            Students
+          </h2>
+          <img src="./img/nav.svg" alt="nav" />
+        </div>
+        <div
+          class="flex items-center justify-between pt-5 pr-[51px] pb-5 pl-[30px] gap-3"
+        >
+          <div
+            id="boxSearch"
+            class="bg-white flex items-center justify-between px-[13px] py-[9px] rounded-lg [@media(max-width:645px)]:hidden gap-2"
+          >
+            <input
+              id="search"
+              class="bg-transparent outline-none w-[100%] h-[100%]"
+              type="text"
+              placeholder="Search..."
+            />
+            <img src="./img/search 1.svg" alt="" />
+          </div>
+          <img src="./img/bell 1.svg" alt="ball" />
+        </div>
+      </div>
+      <div
+        class="flex items-start justify-start gap-5 [@media(max-width:660px)]:flex-col"
+      >
+        <div
+          class="w-[300px] h-[100%] flex flex-col items-center justify-center [@media(max-width:660px)]:flex-row [@media(max-width:660px)]:w-[100%]"
+        >
+          <div
+            class="flex flex-col items-center justify-between [@media(max-width:660px)]:flex-row [@media(max-width:660px)]:w-[100%] p-6"
+          >
+            <div
+              class="flex flex-col items-center mb-[63px] [@media(max-width:660px)]:mb-[0px]"
+            >
+              <img
+                src="./img/imgMen.jpg"
+                alt="Admin"
+                class="w-[120px] h-[120px] rounded-full object-cover"
+              />
+              <h3 class="text-lg font-semibold mt-4 mb-[10px]">
+                Odilov Aslanbek
+              </h3>
+              <p class="text-yellow-600 text-sm">Admin</p>
+            </div>
+            <div
+              class="flex flex-col items-center [@media(max-width:660px)]:h-auto gap-5"
+            >
+              <button
+                class="flex items-center gap-2 bg-yellow-500 text-black px-8 py-[9px] rounded-lg font-medium shadow-md"
+              >
+                <img src="./img/student.svg" alt="" />
+                <p
+                  class="font-medium font-[Montserrat] [@media(max-width:410px)]:hidden"
+                >
+                  Students
+                </p>
+              </button>
+
+              <div
+                id="logout"
+                class="out flex items-center gap-2 text-black text-sm pb-6 mt-[180%] [@media(max-width:660px)]:mt-[20px] [@media(max-width:1120px)]:mt-[127%]"
+              >
+                <span class="font-medium font-[Montserrat] text-[14px]"
+                  >Logout</span
+                >
+                <span><img src="./img/logout.svg" alt="" /></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="searchBox" class="fixed w-[100%] px-[20px] mt-[-55px] hidden">
+          <div
+            class="bg-white flex w-[100%] justify-between px-[13px] py-[9px] gap-2 rounded-lg"
+          >
+            <input
+              id="search1"
+              class="bg-transparent outline-none w-[100%] h-[35px]"
+              type="text"
+              placeholder="Search..."
+            />
+            <img src="./img/search 1.svg" alt="" />
+          </div>
+        </div>
+
+        <div id="dinamikCards" class="w-[100%]">
+          <div id="cardsMax" class="w-[100%]">
+            <div class="bg-[#F8F8F8] pr-[30px] pl-[30px] pt-[20px]">
+              <div
+                class="flex items-center justify-between border-b-2 border-[#E5E5E5] pb-[11px] mb-[21px]"
+              >
+                <h2
+                  class="text-[22px] font-[Montserrat] font-bold [@media(max-width:1120px)]:text-[20px] [@media(max-width:330px)]:text-[19px]"
+                >
+                  Students List
+                </h2>
+                <div class="flex items-center justify-center gap-[30px]">
+                  <div class="sortImg">
+                    <img src="./img/sort 1.svg" alt="sort" />
+                  </div>
+                  <button
+                    id="btnModal"
+                    class="bg-[#FEAF00] pt-3 pb-3 pl-[25px] pr-[25px] rounded text-[14px] font-medium font-[Montserrat] text-white [@media(max-width:1120px)]:px-[15px] [@media(max-width:1120px)]:py-[8px] [@media(max-width:660px)]:hidden"
+                  >
+                    ADD NEW STUDENT
+                  </button>
+                  <button
+                    id="btnModal1"
+                    class="bg-[#FEAF00] pt-3 pb-3 pl-[25px] pr-[25px] rounded text-[14px] font-medium font-[Montserrat] text-white [@media(max-width:1120px)]:px-[15px] [@media(max-width:1120px)]:py-[8px] hidden [@media(max-width:660px)]:block"
+                  >
+                    ADD
+                  </button>
+                </div>
+              </div>
+
+              <div class="aslan">
+                <div
+                  class="grid grid-cols-5 pl-4 pr-4 pt-4 pb-2 text-gray-500 font-semibold [@media(max-width:1120px)]:hidden"
+                >
+                  <div class="ml-[70px]">Name</div>
+                  <div>Email</div>
+                  <div>Phone</div>
+                  <div>Enroll Number</div>
+                  <div>Date admission</div>
+                </div>
+
+                <div
+                  id="userList"
+                  class="w-[100%] max-h-[580px] [@media(max-width:660px)]:max-h-[500px] h-screen overflow-y-auto pb-[20px]"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div
+      id="error"
+      class="top-[0px] z-50 [@media(max-width:600px)]:w-[100%] left-[-100%] ease-linear w-[40%] h-[50px] flex items-center justify-center rounded text-[20px] fixed bg-slate-300"
+    >
+      <p>Malumot kiriting...</p>
+    </div>
+
+    <div class="modal ease-linear">
+      <div
+        class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm transition-transform duration-300 px-[20px]"
+        id="modal"
+      >
+        <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md relative">
+          <!-- Close Button -->
+          <div
+            id="ext"
+            class="absolute w-[40px] h-[40px] rounded-full bg-slate-400 flex items-center justify-center top-[-15px] right-[-15px]"
+          >
+            <i class="fa-solid fa-xmark text-xl"></i>
+          </div>
+
+          <h1 class="text-2xl font-semibold text-center mb-4">
+            Talabalar ro'yxati
+          </h1>
+
+          <form action="" id="form" class="space-y-4">
+            <input
+              class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              type="text"
+              id="name"
+              placeholder="Name"
+            />
+            <input
+              class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              type="email"
+              id="email"
+              placeholder="Email"
+            />
+            <input
+              class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              type="number"
+              id="phone"
+              placeholder="Phone"
+            />
+            <input
+              class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              type="number"
+              id="idUser"
+              placeholder="Enroll Number"
+            />
+            <input
+              class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              type="date"
+              id="date"
+              placeholder="Date admission"
+            />
+            <button
+              class="w-full bg-blue-600 text-white py-3 rounded-md hover:bg-blue-700 transition duration-300"
+              id="submitBtn"
+              type="submit"
+            >
+              Yuborish
+            </button>
+          </form>
+
+          <button
+            id="editBtn"
+            class="w-full bg-green-600 text-white py-3 rounded-md mt-4 hover:bg-green-700 transition duration-300"
+          >
+            Update
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let form = document.getElementById("form");
+      let name = document.getElementById("name");
+      let email = document.getElementById("email");
+      let phone = document.getElementById("phone");
+      let idUser = document.getElementById("idUser");
+      let date = document.getElementById("date");
+      let btnM = document.getElementById("btnModal");
+      let btnM1 = document.getElementById("btnModal1");
+      let btn2 = document.getElementById("btn2");
+      let ext = document.getElementById("ext");
+      let modal = document.querySelector(".modal");
+      let editBtn = document.getElementById("editBtn");
+      let submitBtn = document.getElementById("submitBtn");
+      let list = document.getElementById("userList");
+      let search = document.getElementById("search");
+      let search1 = document.getElementById("search1");
+      let logout = document.getElementById("logout");
+      let sortImg = document.querySelector(".sortImg");
+      let user = document.getElementById("cardsMax");
+      let dinamik = document.getElementById("dinamikCards");
+      let error = document.getElementById("error");
+      let arr = [];
+
+      editBtn.style.display = "none";
+      btnM.addEventListener("click", () => {
+        modal.style.display = "block";
+        submitBtn.style.display = "block";
+        editBtn.style.display = "none";
+        form.reset();
+      });
+      btnM1.addEventListener("click", () => {
+        modal.style.display = "block";
+        submitBtn.style.display = "block";
+        editBtn.style.display = "none";
+        form.reset();
+      });
+      ext.addEventListener("click", () => {
+        modal.style.display = "none";
+      });
+      submitBtn.addEventListener("click", () => {
+        modal.style.display = "none";
+      });
+      logout.addEventListener("click", () => {
+        window.location.href = "signIn.html";
+      });
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        create();
+        form.reset();
+      });
+
+      function create() {
+        if (
+          name.value.trim() == "" ||
+          email.value.trim() == "" ||
+          phone.value.trim() == "" ||
+          idUser.value.trim() == "" ||
+          date.value.trim() == ""
+        ) {
+          error.style.left = "0px";
+
+          setTimeout(() => {
+            error.style.left = "-100%";
+          }, 3000);
+          return;
+        }
+
+        arr.push({
+          name: name.value,
+          email: email.value,
+          phone: phone.value,
+          idUser: idUser.value,
+          date: date.value,
+        });
+
+        localStorage.setItem("data", JSON.stringify(arr));
+        read();
+      }
+
+      function delet(indexNum) {
+        arr.splice(indexNum, 1);
+        localStorage.setItem("data", JSON.stringify(arr));
+        read();
+      }
+
+      function edit(indexNum) {
+        if (
+          name.value.trim() == "" ||
+          email.value.trim() == "" ||
+          phone.value.trim() == "" ||
+          idUser.value.trim() == "" ||
+          date.value.trim() == ""
+        ) {
+          error.style.left = "0px";
+
+          setTimeout(() => {
+            error.style.left = "-100%";
+          }, 3000);
+          return;
+        }
+
+        name.value = arr[indexNum].name;
+        email.value = arr[indexNum].email;
+        phone.value = arr[indexNum].phone;
+        idUser.value = arr[indexNum].idUser;
+        date.value = arr[indexNum].date;
+
+        modal.style.display = "block";
+        submitBtn.style.display = "none";
+        editBtn.style.display = "block";
+
+        editBtn.onclick = function () {
+          update(indexNum);
+          modal.style.display = "none";
+        };
+        read();
+      }
+
+      function update(index) {
+        modal.style.display = "block";
+        arr[index] = {
+          name: name.value,
+          email: email.value,
+          phone: phone.value,
+          idUser: idUser.value,
+          date: date.value,
+        };
+
+        localStorage.setItem("data", JSON.stringify(arr));
+        read();
+        form.reset();
+      }
+
+      (function () {
+        arr = JSON.parse(localStorage.getItem("data"))
+          ? JSON.parse(localStorage.getItem("data"))
+          : [];
+        read();
+        dinamik();
+      })();
+
+      sortImg.addEventListener("click", () => {
+        arr.sort((a, b) => a.name.localeCompare(b.name));
+        read();
+      });
+
+      function read() {
+        list.innerHTML = "";
+        arr.map((obj, indexNum) => {
+          list.innerHTML += `
+                <div class="mt-[10px] cards cursor-pointer" onclick="dinamikFn(${indexNum})">
+                     <div
+                            class="grid grid-cols-5 gap-[10px] [@media(max-width:1120px)]:grid-cols-1 items-center bg-white p-4 rounded-lg hover:bg-gray-50"
+                          >
+                            <div
+                              class="flex items-center space-x-4 gap-4 [@media(max-width:1120px)]:flex-col [ [@media(max-width:1120px)]:space-x-0"
+                            >
+                              <img
+                                src="./img/img.png"
+                                alt="User"
+                                class="w-10 h-10 rounded"
+                              />
+                              <div class="flex items-center justify-between w-[100%]">
+                                <div
+                                  class="font-medium hidden [@media(max-width:1120px)]:block"
+                                >
+                                  Name:
+                                </div>
+                                <div class="font-medium nameCards">${obj.name}</div>
+                              </div>
+                            </div>
+                            <div
+                              class="flex items-center justify-between gap-[20px] [@media(max-width:1120px)]:mt-[10px]"
+                            >
+                              <div class="hidden [@media(max-width:1120px)]:block">
+                                Email:
+                              </div>
+                              <div class="text-gray-600 truncate">${obj.email}</div>
+                            </div>
+                            <div
+                              class="flex items-center justify-between [@media(max-width:1120px)]:mt-[10px]"
+                            >
+                              <div class="hidden [@media(max-width:1120px)]:block">
+                                Phone:
+                              </div>
+                              <div class="text-gray-600 ">${obj.phone}</div>
+                            </div>
+                            <div
+                              class="flex items-center justify-between [@media(max-width:1120px)]:mt-[10px]"
+                            >
+                              <div class="hidden [@media(max-width:1120px)]:block">
+                                Id:
+                              </div>
+                              <div class="text-gray-600">${obj.idUser}</div>
+                            </div>
+                            <div
+                              class="text-gray-600 flex justify-between items-center [@media(max-width:1120px)]:flex-col [@media(max-width:1120px)]:items-end [@media(max-width:1120px)]:mt-[10px]"
+                            >
+                              <div class="flex items-center justify-between w-[100%]">
+                                <div class="hidden [@media(max-width:1120px)]:block">
+                                  Date:
+                                </div>
+                                <div class="">${obj.date}</div>
+                              </div>
+                              <div
+                                class="flex space-x-3 text-yellow-500 [@media(max-width:1120px)]:mt-[10px] [@media(max-width:1120px)]:gap-[30px]"
+                              >
+                                <button onclick="edit(${indexNum})" class="hover:text-yellow-700">
+                                  <img src="./img/edit.svg" alt="" />
+                                </button>
+                                <button onclick="delet(${indexNum})" class="hover:text-red-500">
+                                  <img src="./img/trash 1.svg" alt="" />
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                          </div>
+            `;
+        });
+      }
+
+      function dinamikFn(indexNum) {
+        let searchBox = document.getElementById("searchBox");
+        let boxSearch = document.getElementById("boxSearch");
+        let newData = JSON.parse(localStorage.getItem("data")) || [];
+
+        user.style.display = "none";
+        boxSearch.style.display = "none";
+        searchBox.style.display = "none";
+
+        dinamik.innerHTML = ` 
+        <div class="w-[100%]">
+  
+          <div class="bg-[#F8F8F8] h-[750px] [@media(max-width:780px)]:h-[615px] pr-[30px] pl-[30px] pt-[15px] [@media(max-width:780px)]:px-[15px]">
+            <div
+              class="flex items-center justify-between border-b-2 border-[#E5E5E5] pb-[11px] mb-[21px]"
+            >
+              <h2
+                class="text-[22px] font-[Montserrat] font-bold [@media(max-width:1120px)]:text-[20px] [@media(max-width:330px)]:text-[19px]"
+              >
+                Students List
+              </h2>
+            </div>
+
+            <div
+              class="relative rounded-lg w-[592px] h-[391px] [@media(max-width:1120px)]:w-[100%] [@media(max-width:780px)]:flex-col [@media(max-width:780px)]:h-[525px] [@media(max-width:780px)]:gap-[20px] pb-[30px] flex items-start gap-[51px] pl-[22px] pt-[25px] bg-white"
+            >
+              <div class="">
+                <img
+                  class="w-[209px] h-[216px]"
+                  src="./img/profile.png"
+                  alt=""
+                />
+              </div>
+              <div class="flex items-start gap-[16px] flex-col">
+                <div class="">
+                  <div
+                    class="text-[12px] font-[Montserrat] font-semibold text-[#ACACAC]"
+                  >
+                    Name
+                  </div>
+                  <div
+                    class="text-[14px] font-[Montserrat] font-normal text-black"
+                  >
+                    ${newData[indexNum].name}
+                  </div>
+                </div>
+                <div class="w-[100%]">
+                  <div
+                    class="text-[12px] font-[Montserrat] font-semibold text-[#ACACAC]"
+                  >
+                    Email
+                  </div>
+                  <div
+                    class="text-[14px] font-[Montserrat] font-normal text-black w-[100%] truncate"
+                  >
+                    ${newData[indexNum].email}
+                  </div>
+                </div>
+                <div class="">
+                  <div
+                    class="text-[12px] font-[Montserrat] font-semibold text-[#ACACAC]"
+                  >
+                    Phone
+                  </div>
+                  <div
+                    class="text-[14px] font-[Montserrat] font-normal text-black"
+                  >
+                    ${newData[indexNum].phone}
+                  </div>
+                </div>
+                <div class="">
+                  <div
+                    class="text-[12px] font-[Montserrat] font-semibold text-[#ACACAC]"
+                  >
+                    Enroll Number
+                  </div>
+                  <div
+                    class="text-[14px] font-[Montserrat] font-normal text-black"
+                  >
+                   ${newData[indexNum].idUser}
+                  </div>
+                </div>
+                <div class="">
+                  <div
+                    class="text-[12px] font-[Montserrat] font-semibold text-[#ACACAC]"
+                  >
+                    Date admission
+                  </div>
+                  <div
+                    class="text-[14px] font-[Montserrat] font-normal text-black"
+                  >
+                   ${newData[indexNum].date}
+                  </div>
+                </div>
+              </div>
+              <img
+              onclick="edit(${indexNum})"
+              id="editImg"
+                class="absolute top-[15px] right-[15px] [@media(max-width:360px)]:top-[390px]"
+                src="./img/ruchki.svg"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+        `;
+      }
+
+      let searchBox = document.getElementById("searchBox");
+      function handleSearchBox() {
+        if (window.innerWidth < 646) {
+          window.addEventListener("scroll", toggleSearchBox);
+        } else {
+          window.removeEventListener("scroll", toggleSearchBox);
+          searchBox.classList.add("hidden");
+        }
+      }
+      function toggleSearchBox() {
+        if (window.scrollY > 0) {
+          searchBox.classList.remove("hidden");
+        } else {
+          searchBox.classList.add("hidden");
+        }
+      }
+      handleSearchBox();
+      window.addEventListener("resize", handleSearchBox);
+
+      search.addEventListener("keyup", () => {
+        let filter = search.value.toLowerCase();
+        let cards = document.querySelectorAll(".cards");
+        cards.forEach((card) => {
+          let name = card.querySelector(".nameCards").textContent.toLowerCase();
+          if (name.includes(filter)) {
+            card.style.display = "block";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      });
+
+      search1.addEventListener("keyup", () => {
+        let filter = search1.value.toLowerCase();
+        let cards = document.querySelectorAll(".cards");
+        cards.forEach((card) => {
+          let name = card.querySelector(".nameCards").textContent.toLowerCase();
+          if (name.includes(filter)) {
+            card.style.display = "block";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

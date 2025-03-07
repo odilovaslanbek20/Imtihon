@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="./src/output.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Imtihon</title>
+  </head>
+  <body
+    class="flex items-center justify-center p-3"
+    style="
+      background: linear-gradient(71.17deg, #feaf00 19.35%, #f8d442 90.12%);
+    "
+  >
+    <div
+      class="w-80 pb-[60px] mt-16 bg-white p-8 rounded-2xl shadow-lg text-center transition ease-in-out delay-150"
+    >
+      <h2 class="text-2xl font-semibold mb-4">Welcome</h2>
+      <p class="mb-6">Choose an option to continue</p>
+      <button
+        onclick="showSignUp()"
+        class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 mb-2"
+      >
+        Sign Up
+      </button>
+      <button
+        onclick="showSignIn()"
+        class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600"
+      >
+        Sign In
+      </button>
+    </div>
+
+    <script>
+        function showSignUp() {
+            window.location.href = "signUp.html";
+        }
+
+        function showSignIn() {
+            window.location.href = "signIn.html";
+        }
+    </script>
+  </body>
+</html>
