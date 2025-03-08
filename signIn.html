@@ -63,13 +63,11 @@
         user.map((users) => {
          if(userLogin.value.trim() === users.login && userPassword.value.trim() === users.password){
           window.location.href = "admin.html"
-          userLogin.textContent = "";
-          userPassword.textContent = "";
          }else{
           alert("User malumotlarini xato kiritildi...")
          }
         })
-        
+        form.reset()
       })
     </script>
   </body>
